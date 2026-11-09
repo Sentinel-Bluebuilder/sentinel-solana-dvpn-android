@@ -1,0 +1,20 @@
+basis = 'per_gb'
+escrow_base_units = 1000000000
+max_prepay_bytes = 2000000000
+max_prepay_seconds = 14400
+node_timeout_seconds = 30
+owner = 'HQRJv6fQsgzgu3j4QHsBGXSZXbjJWSbdGfNroeURkRJb'
+prepay_bytes = 0
+prepay_seconds = 0
+services = ['wireguard', 'amneziawg', 'v2ray', 'xray', 'openvpn', 'hysteria2']
+tolerance_percent = 5
+
+[key]
+name = 'device'
+passphrase_file = ''
+
+[network]
+allow_lan = false
+dns_backend = 'vpn'
+dns_servers = ['1.1.1.1', '1.0.0.1']
+kill_switch = 'on'

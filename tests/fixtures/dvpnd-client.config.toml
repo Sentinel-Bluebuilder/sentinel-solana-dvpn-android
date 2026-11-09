@@ -1,0 +1,16 @@
+basis = 'per_gb'
+escrow = 1000000000
+owner = '11111111111111111111111111111111'
+prepay_bytes = 1000000000
+prepay_seconds = 3600
+services = ['wireguard', 'amneziawg', 'v2ray', 'xray', 'openvpn', 'hysteria2']
+
+[key]
+name = 'device'
+passphrase_file = ''
+
+[network]
+allow_lan = false
+dns = 'netsh'
+dns_servers = ['1.1.1.1', '1.0.0.1']
+kill_switch = 'on'

@@ -1,0 +1,51 @@
+# Windows installer. Build with `npm run release:win` (scripts/release-win.mjs): it fetches and
+# verifies every bundled dependency first (build/deps.lock.json), then runs this. docs/INSTALLER.md.
+appId: network.sentinel.devnet-dvpn
+productName: Devnet dVPN
+copyright: Copyright (c) 2026 Devnet dVPN contributors
+directories:
+  output: dist
+  buildResources: build
+files:
+  - out/**/*
+  - package.json
+# resources/ = dvpnd + protocol binaries (bin/), driver installers (deps/), PowerShell helpers (scripts/)
+extraResources:
+  - from: resources
+    to: resources
+    filter:
+      - '**/*'
+extraFiles:
+  - from: build/cli
+    to: bin
+  - from: build/THIRD-PARTY-NOTICES.txt
+    to: THIRD-PARTY-NOTICES.txt
+  - from: LICENSE
+    to: LICENSE.txt
+asarUnpack:
+  - resources/**
+win:
+  target:
+    - target: nsis
+      arch: [x64]
+  icon: build/icon.ico
+  requestedExecutionLevel: asInvoker
+  # Code signing: set CSC_LINK (path/base64 of the .pfx) + CSC_KEY_PASSWORD in the environment and
+  # electron-builder signs the app, the uninstaller and the setup .exe. Unsigned builds show
+  # SmartScreen "Unknown publisher" (docs/INSTALLER.md -> Signing).
+nsis:
+  artifactName: Devnet-dVPN-Setup-${version}-x64.${ext}
+  oneClick: false
+  perMachine: true
+  allowElevation: true
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: Devnet dVPN
+  uninstallDisplayName: Devnet dVPN
+  license: build/license.txt
+  installerIcon: build/icon.ico
+  uninstallerIcon: build/icon.ico
+  runAfterFinish: true
+  deleteAppDataOnUninstall: false
+  include: build/installer.nsh

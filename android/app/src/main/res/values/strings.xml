@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Devnet dVPN</string>
+    <string name="tile_label">Devnet dVPN</string>
+    <string name="channel_vpn">VPN status</string>
+    <string name="channel_events">Connection events</string>
+    <string name="notif_connected">Protected</string>
+    <string name="notif_connected_text">Your traffic goes through a %1$s node.</string>
+    <string name="notif_held">Blocking internet</string>
+    <string name="notif_held_text">The kill switch holds traffic until a VPN connects.</string>
+    <string name="notif_ready">Not connected</string>
+    <string name="notif_ready_text">Open the app to pick a node.</string>
+    <string name="notif_turn_off">Turn off</string>
+</resources>

@@ -1,0 +1,14 @@
+# gitleaks config: default rules, plus one allowlisted value.
+# The value is the OpenVPN security mailing list's PUBLIC OpenPGP key fingerprint, used by
+# scripts/release-android.sh and scripts/build-openvpn-android.sh to check the OpenVPN source
+# signature. It is not a secret. Matching the exact value (not a commit fingerprint) keeps
+# working after a history rewrite changes every commit hash.
+title = 'devnet-dvpn-android'
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = 'OpenVPN release signing key fingerprint (public, not a secret)'
+regexTarget = 'match'
+regexes = ['''F554A3687412CFFEBDEFE0A312F5F7B42F2B01E7''']

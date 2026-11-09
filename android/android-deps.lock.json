@@ -1,0 +1,62 @@
+[
+  {
+    "name": "hysteria2",
+    "abi": "x86_64",
+    "version": "2.13.0",
+    "source": "release:hysteria-android-amd64",
+    "sha256": "093c3f7b2d8cb255bd62148e2662d9054e1bc6fb69ae57ece4665016dfcd1a03",
+    "license": "MIT",
+    "licenseUrl": "https://github.com/apernet/hysteria/blob/app/v2.13.0/LICENSE.md",
+    "sourceUrl": "https://github.com/apernet/hysteria/tree/app/v2.13.0"
+  },
+  {
+    "name": "hysteria2",
+    "abi": "arm64-v8a",
+    "version": "2.13.0",
+    "source": "release:hysteria-android-arm64",
+    "sha256": "13d5b85cd45e11cf02847dc2b6229d6f9a20b3cb87a00b9356cf244e3bd8db84",
+    "license": "MIT",
+    "licenseUrl": "https://github.com/apernet/hysteria/blob/app/v2.13.0/LICENSE.md",
+    "sourceUrl": "https://github.com/apernet/hysteria/tree/app/v2.13.0"
+  },
+  {
+    "name": "xray",
+    "abi": "x86_64",
+    "version": "26.3.27",
+    "source": "release:Xray-android-amd64.zip",
+    "sha256": "26b2ac1e596242847a247df9e932ac480bf6072c5c686517f5a3017320895814",
+    "license": "MPL-2.0",
+    "licenseUrl": "https://github.com/XTLS/Xray-core/blob/v26.3.27/LICENSE",
+    "sourceUrl": "https://github.com/XTLS/Xray-core/tree/v26.3.27"
+  },
+  {
+    "name": "xray",
+    "abi": "arm64-v8a",
+    "version": "26.3.27",
+    "source": "release:Xray-android-arm64-v8a.zip",
+    "sha256": "19101a8191d6d606da975f719c8cdb80b8710b87ab17edc00ef74b9e39588714",
+    "license": "MPL-2.0",
+    "licenseUrl": "https://github.com/XTLS/Xray-core/blob/v26.3.27/LICENSE",
+    "sourceUrl": "https://github.com/XTLS/Xray-core/tree/v26.3.27"
+  },
+  {
+    "name": "v2ray",
+    "abi": "arm64-v8a",
+    "version": "5.53.0",
+    "source": "release:v2ray-android-arm64-v8a.zip",
+    "sha256": "5fb3890dbb3e73ff2a3d8984a9eacfa631f6cf53e9bdf0539c925b9a04c95cf5",
+    "license": "MIT",
+    "licenseUrl": "https://github.com/v2fly/v2ray-core/blob/v5.53.0/LICENSE",
+    "sourceUrl": "https://github.com/v2fly/v2ray-core/tree/v5.53.0"
+  },
+  {
+    "name": "v2ray",
+    "abi": "x86_64",
+    "version": "5.53.0",
+    "source": "source:v2fly/v2ray-core@v5.53.0 GOOS=android GOARCH=amd64",
+    "sha256": "cf3b27abc92feb18cc16836082ca19a1fd3a38723acfd4d273338835a499db2c",
+    "license": "MIT",
+    "licenseUrl": "https://github.com/v2fly/v2ray-core/blob/v5.53.0/LICENSE",
+    "sourceUrl": "https://github.com/v2fly/v2ray-core/tree/v5.53.0"
+  }
+]

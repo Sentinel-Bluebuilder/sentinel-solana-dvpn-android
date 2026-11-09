@@ -1,0 +1,83 @@
+{
+  "_comment": "WINDOWS INSTALLER ONLY (inherited from the Windows app; the Android build never reads it: the APK list is android/android-deps.lock.json, notices from scripts/android-notices.mjs). Every third-party program the Windows installer ships. Pinned by version + SHA-256; scripts/fetch-deps.mjs refuses any mismatch. Bump = new url + sha256 + a live test (docs/INSTALLER.md).",
+  "deps": [
+    {
+      "name": "wireguard",
+      "title": "WireGuard for Windows",
+      "version": "1.1.1",
+      "url": "https://download.wireguard.com/windows-client/wireguard-amd64-1.1.1.msi",
+      "sha256": "7bfed60ad61b785c914b38b61555a975488e1d3ec472dbfb2fcdf498fca75242",
+      "kind": "msi",
+      "signer": "WireGuard LLC",
+      "license": "MIT",
+      "licenseUrl": "https://git.zx2c4.com/wireguard-windows/tree/COPYING",
+      "sourceUrl": "https://git.zx2c4.com/wireguard-windows/"
+    },
+    {
+      "name": "amneziawg",
+      "title": "AmneziaWG for Windows",
+      "version": "3.1.0",
+      "url": "https://github.com/amnezia-vpn/amneziawg-windows-client/releases/download/3.1.0/amneziawg-amd64-3.1.0.msi",
+      "sha256": "a1b48ea8699cd347832a3691d832004574ef8ad65bcf887611ac8acb99b7de8b",
+      "kind": "msi",
+      "signer": "Privacy Technologies OU",
+      "license": "MIT",
+      "licenseUrl": "https://github.com/amnezia-vpn/amneziawg-windows-client/blob/master/COPYING",
+      "sourceUrl": "https://github.com/amnezia-vpn/amneziawg-windows-client"
+    },
+    {
+      "name": "openvpn",
+      "title": "OpenVPN Community 2.6 (2.7 removed Wintun, which dvpnd needs: UPSTREAM-GAPS #21)",
+      "version": "2.6.23-I002",
+      "url": "https://swupdate.openvpn.net/community/releases/OpenVPN-2.6.23-I002-amd64.msi",
+      "sha256": "31809e97debe44c12be06ed892c2a43e55b67b31cb852827b7ec8f2d6c0b8dc6",
+      "kind": "msi",
+      "signer": "OpenVPN Inc.",
+      "license": "GPL-2.0",
+      "licenseUrl": "https://github.com/OpenVPN/openvpn/blob/release/2.6/COPYING",
+      "sourceUrl": "https://github.com/OpenVPN/openvpn/tree/v2.6.23"
+    },
+    {
+      "name": "hysteria2",
+      "title": "Hysteria 2",
+      "version": "2.13.0",
+      "url": "https://github.com/apernet/hysteria/releases/download/app/v2.13.0/hysteria-windows-amd64.exe",
+      "sha256": "162ef8fe55dc7ec810dda662908f8e65ec36bd6da39cb87c3bd66184ab68f067",
+      "kind": "exe",
+      "dest": "resources/bin/hysteria2/hysteria2.exe",
+      "license": "MIT",
+      "licenseUrl": "https://github.com/apernet/hysteria/blob/master/LICENSE.md",
+      "sourceUrl": "https://github.com/apernet/hysteria/tree/app/v2.13.0"
+    },
+    {
+      "name": "v2ray",
+      "title": "V2Ray",
+      "version": "5.53.0",
+      "url": "https://github.com/v2fly/v2ray-core/releases/download/v5.53.0/v2ray-windows-64.zip",
+      "sha256": "46ee170d031ea3be79cc583e61e6335a612e4c87925deed2a7179b0a5fb79f60",
+      "kind": "zip",
+      "dest": "resources/bin/v2ray",
+      "files": ["v2ray.exe", "geoip.dat", "geosite.dat"],
+      "license": "MIT",
+      "licenseUrl": "https://github.com/v2fly/v2ray-core/blob/master/LICENSE",
+      "sourceUrl": "https://github.com/v2fly/v2ray-core/tree/v5.53.0"
+    },
+    {
+      "name": "xray",
+      "title": "Xray",
+      "version": "26.3.27",
+      "url": "https://github.com/XTLS/Xray-core/releases/download/v26.3.27/Xray-windows-64.zip",
+      "sha256": "d004c39288ce9ada487c6f398c7c545f7d749e44bdfdd59dbc9f865afba4e1ad",
+      "kind": "zip",
+      "dest": "resources/bin/xray",
+      "files": ["xray.exe", "geoip.dat", "geosite.dat"],
+      "license": "MPL-2.0",
+      "licenseUrl": "https://github.com/XTLS/Xray-core/blob/main/LICENSE",
+      "sourceUrl": "https://github.com/XTLS/Xray-core/tree/v26.3.27"
+    }
+  ],
+  "local": [
+    { "name": "dvpnd", "path": "resources/bin/dvpnd.exe", "sha256": "9c4b55ffd5972cfd7af2d383f0c83781444a5c2784e7339ee7ea7b75a7387d9e", "note": "built 2026-10-21 from upstream cf4c372 + PR #1 fixes (BFE query-only probe, RPC retry x2) + Windows fixes (leftover protocol process stopped from its PID file, DNS revert on a vanished adapter, service uninstall releases a persist kill switch, Hysteria2 sessions turn IPv6 off via dynamic WFP; UPSTREAM-GAPS #42-#44, #46), devnet ldflags, tag cf4c372-rc, local commit 5097203; never vendored into this repo" },
+    { "name": "pipe-bridge", "path": "resources/bin/pipe-bridge.exe", "note": "built from tools/pipe-bridge" }
+  ]
+}

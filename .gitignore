@@ -1,0 +1,44 @@
+node_modules/
+out/
+dist/
+dist-vm/
+dist-vm-ui/
+.env
+keys/
+*.keypair.json
+tests/devnet/state.json
+resources/bin/*.exe
+# Protocol binaries (official releases, sha256-checked) — never committed
+resources/bin/v2ray/
+resources/bin/xray/
+*.tsbuildinfo
+resources/bin/hysteria2/
+build/.deps-cache/
+resources/deps/
+build/THIRD-PARTY-NOTICES.txt
+build/license.txt
+dvpnd/
+android/app/build/
+android/.gradle/
+*.apk
+*.aab
+*.aar
+android/app/src/main/jniLibs/
+android/local.properties
+android/.kotlin/
+android/build/
+# Firebase Test Lab runs: keep reports, not the uploaded APKs or bucket copies
+test-results/android/ftl/*/*.apk
+test-results/android/ftl/*/bucket/
+
+# ─── publish hygiene (gitstruct) ───
+*.bak
+*.pem
+*.key
+*.secret
+*.secrets
+secrets/
+*wallet*.keystore
+id.json
+client.json
+/results/

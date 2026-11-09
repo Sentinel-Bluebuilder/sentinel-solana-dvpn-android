@@ -1,0 +1,71 @@
+{
+  "name": "devnet-dvpn",
+  "version": "0.1.4",
+  "private": true,
+  "description": "Devnet dVPN — pure peer-to-peer dVPN desktop app on the Sentinel Solana devnet protocol",
+  "main": "out/main/index.cjs",
+  "author": "Sentinel-Bluebuilder",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "start": "electron-vite preview",
+    "typecheck:node": "tsc --noEmit -p tsconfig.node.json",
+    "typecheck:web": "tsc --noEmit -p tsconfig.web.json",
+    "typecheck": "npm run typecheck:node && npm run typecheck:web",
+    "test": "vitest run tests/unit",
+    "check:release-version": "node scripts/check-release-version.mjs",
+    "test:devnet": "vitest run tests/devnet",
+    "package:win": "electron-vite build && electron-builder --win",
+    "deps:fetch": "node scripts/fetch-deps.mjs",
+    "release:win": "node scripts/release-win.mjs",
+    "icon": "electron scripts/make-icon.cjs",
+    "build:cli": "node scripts/build-cli.mjs",
+    "build:android-main": "node scripts/build-android-main.mjs",
+    "build:bridge": "cd tools/pipe-bridge && go vet ./... && go build -trimpath -mod=readonly -ldflags \"-s -w\" -o ../../resources/bin/pipe-bridge.exe .",
+    "cli": "node out/cli/devnet-dvpn.cjs",
+    "docs:cli": "node scripts/gen-cli-doc.mjs",
+    "notices:android": "node scripts/android-notices.mjs"
+  },
+  "dependencies": {
+    "@coral-xyz/anchor": "0.32.1",
+    "@fontsource-variable/jetbrains-mono": "5.3.0",
+    "@fontsource-variable/outfit": "5.3.0",
+    "@fontsource/tomorrow": "5.3.0",
+    "@grpc/grpc-js": "1.13.6",
+    "@grpc/proto-loader": "0.7.13",
+    "@scure/bip39": "1.6.0",
+    "@solana/spl-token": "0.4.14",
+    "@solana/web3.js": "1.98.4",
+    "bs58": "6.0.0",
+    "flag-icons": "7.5.0",
+    "qrcode": "1.5.4",
+    "zustand": "4.5.5"
+  },
+  "devDependencies": {
+    "@types/node": "22.10.1",
+    "@types/qrcode": "1.5.5",
+    "@types/react": "18.3.12",
+    "@types/react-dom": "18.3.1",
+    "@vitejs/plugin-react": "4.3.3",
+    "autoprefixer": "10.4.20",
+    "electron": "39.8.5",
+    "electron-builder": "25.1.8",
+    "electron-vite": "2.3.0",
+    "postcss": "8.4.49",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "tailwindcss": "3.4.14",
+    "typescript": "5.6.3",
+    "vite": "5.4.11",
+    "vitest": "2.1.9"
+  },
+  "engines": {
+    "node": ">=20.10"
+  },
+  "productName": "Devnet dVPN",
+  "bin": {
+    "devnet-dvpn": "out/cli/devnet-dvpn.cjs"
+  }
+}

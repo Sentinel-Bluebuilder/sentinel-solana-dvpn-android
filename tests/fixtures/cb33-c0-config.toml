@@ -1,0 +1,67 @@
+basis = 'per_gb'
+cap_lead = true
+escrow_base_units = 1000000000
+max_prepay_bytes = 268435456
+max_prepay_seconds = 900
+node_timeout_seconds = 30
+owner = '11111111111111111111111111111111'
+prepay_bytes = 100000000
+prepay_seconds = 60
+services = ['amneziawg', 'hysteria2', 'openvpn', 'v2ray', 'wireguard', 'xray']
+tolerance_percent = 10
+tunnel_tolerance_percent = 0
+
+[key]
+name = 'operator'
+passphrase_file = ''
+
+[network]
+allow_lan = false
+dns_backend = 'resolvectl'
+dns_servers = ['1.1.1.1', '1.0.0.1']
+kill_switch = 'on'
+tunnel_check = true
+
+[split]
+mode = ''
+apps = []
+routes = []
+
+[daemon]
+role = 'client'
+
+[log]
+format = 'json'
+level = 'info'
+
+[metrics]
+enabled = false
+listen = '127.0.0.1:9100'
+
+[peer]
+allow_private = false
+
+[rpc]
+commitment = 'confirmed'
+timeout = 10000000000
+url = 'https://api.devnet.solana.com'
+ws_url = 'wss://api.devnet.solana.com'
+
+[tx]
+commitment = 'confirmed'
+compute_unit_margin_percent = 20
+confirm_timeout = 60000000000
+loaded_data_limit_bytes = 8388608
+max_priority_fee_lamports = 100000
+max_transaction_bytes = 1232
+priority_fee_lamports = 0
+priority_fee_mode = 'auto'
+retries = 3
+retry_delay = 2000000000
+
+[tx.paymaster]
+api_key = ''
+fallback = false
+fee_token = ''
+max_fee_base_units = 0
+url = ''

@@ -1,0 +1,29 @@
+[daemon]
+pipe = ''
+role = 'client'
+socket_group = 'Users'
+
+[log]
+format = 'json'
+level = 'info'
+
+[metrics]
+listen = '127.0.0.1:9100'
+enabled = false
+
+[rpc]
+commitment = 'confirmed'
+timeout = 10000000000
+url = 'https://api.devnet.solana.com'
+ws_url = 'wss://api.devnet.solana.com'
+
+[tx]
+commitment = 'confirmed'
+compute_unit_margin = 20
+confirm_timeout = 60000000000
+loaded_data_limit = 8388608
+max_priority_fee = 100000
+priority_fee = 0
+priority_fee_mode = 'auto'
+retries = 3
+retry_delay = 2000000000

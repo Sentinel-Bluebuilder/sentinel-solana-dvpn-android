@@ -1,0 +1,183 @@
+@import 'flag-icons/css/flag-icons.min.css';
+/* Fonts are bundled (CSP font-src 'self'; no CDN — usage never leaks to a third party). */
+@import '@fontsource-variable/outfit/wght.css';
+@import '@fontsource-variable/jetbrains-mono/wght.css';
+@import '@fontsource/tomorrow/500.css';
+@import '@fontsource/tomorrow/600.css';
+@import '@fontsource/tomorrow/700.css';
+@import '@fontsource/tomorrow/800.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Tokens (RGB channels). Dark default; light via html[data-theme="light"] or the OS ─── */
+:root {
+  --bg: 10 11 13;            /* #0a0b0d — canvas */
+  --bg-card: 18 20 23;       /* #121417 */
+  --bg-raised: 24 27 31;     /* #181b1f */
+  --bg-hover: 30 34 39;      /* #1e2227 */
+  --bg-input: 13 15 18;      /* #0d0f12 */
+  --border: rgba(255, 255, 255, 0.07);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --text: 244 245 247;
+  --text-dim: 163 169 179;
+  --text-muted: 128 134 144;  /* ≥ 4.5:1 on cards (was 112 118 128 = 4.1:1) */
+  --sol-purple: 153 69 255;  /* #9945FF — Solana */
+  --sol-green: 20 241 149;   /* #14F195 — Solana */
+  --accent: 153 69 255;
+  --accent-ink: 192 150 255; /* accent as text on dark */
+  --accent-soft: rgba(153, 69, 255, 0.14);
+  --green: 20 241 149;
+  --green-soft: rgba(20, 241, 149, 0.10);
+  --yellow: 255 199 1;       /* gold — warnings only */
+  --yellow-soft: rgba(255, 199, 1, 0.10);
+  --red: 255 90 95;
+  --red-soft: rgba(255, 90, 95, 0.12);
+  --glass: rgba(18, 20, 23, 0.72);
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme='dark']) {
+    --bg: 246 247 249;
+    --bg-card: 255 255 255;
+    --bg-raised: 250 250 252;
+    --bg-hover: 238 240 244;
+    --bg-input: 248 249 251;
+    --border: rgba(10, 20, 40, 0.09);
+    --border-strong: rgba(10, 20, 40, 0.18);
+    --text: 14 16 20;
+    --text-dim: 75 82 98;
+    --text-muted: 100 106 120;
+    --accent: 124 58 237;
+    --accent-ink: 109 40 217;
+    --accent-soft: rgba(124, 58, 237, 0.10);
+    --green: 4 122 74;         /* ≥ 4.5:1 on white (was 6 150 92 = 3.8:1) */
+    --green-soft: rgba(6, 150, 92, 0.10);
+    --yellow: 146 98 0;        /* ≥ 4.5:1 on white (was 176 120 0 = 3.8:1) */
+    --red: 196 36 44;         /* ≥ 4.5:1 on its soft tint (was 214 48 56 = 4.0:1) */
+    --glass: rgba(255, 255, 255, 0.78);
+    color-scheme: light;
+  }
+}
+
+/* ─── Protocol logos: each mark ships an on-dark and an on-light file; the theme picks one ─── */
+.logo-on-light { display: none; }
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme='dark']) .logo-on-light { display: inline-block; }
+  :root:not([data-theme='dark']) .logo-on-dark { display: none; }
+}
+:root[data-theme='light'] .logo-on-light { display: inline-block; }
+:root[data-theme='light'] .logo-on-dark { display: none; }
+
+:root[data-theme='light'] {
+  --bg: 246 247 249;
+  --bg-card: 255 255 255;
+  --bg-raised: 250 250 252;
+  --bg-hover: 238 240 244;
+  --bg-input: 248 249 251;
+  --border: rgba(10, 20, 40, 0.09);
+  --border-strong: rgba(10, 20, 40, 0.18);
+  --text: 14 16 20;
+  --text-dim: 75 82 98;
+  --text-muted: 100 106 120;  /* ≥ 4.5:1 on white (was 118 124 140 = 4.2:1) */
+  --accent: 124 58 237;
+  --accent-ink: 109 40 217;
+  --accent-soft: rgba(124, 58, 237, 0.10);
+  --green: 4 122 74;         /* ≥ 4.5:1 on white (was 6 150 92 = 3.8:1) */
+  --green-soft: rgba(6, 150, 92, 0.10);
+  --yellow: 146 98 0;        /* ≥ 4.5:1 on white (was 176 120 0 = 3.8:1) */
+  --red: 196 36 44;         /* ≥ 4.5:1 on its soft tint (was 214 48 56 = 4.0:1) */
+  --glass: rgba(255, 255, 255, 0.78);
+  color-scheme: light;
+}
+
+html, body, #root { height: 100%; }
+body {
+  background-color: rgb(var(--bg));
+  /* Corner glows, tinted Solana. */
+  background-image:
+    radial-gradient(900px 520px at -10% -20%, rgb(var(--sol-purple) / 0.10), transparent 60%),
+    radial-gradient(800px 480px at 110% 120%, rgb(var(--sol-green) / 0.06), transparent 60%);
+  background-attachment: fixed;
+  color: rgb(var(--text));
+  font-family: theme('fontFamily.sans');
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.011em;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: 'tnum' 0;
+}
+/* Numbers line up in every table, stat and amount. */
+table td, table th, .num { font-variant-numeric: tabular-nums; }
+
+@layer components {
+  .card {
+    @apply rounded-lg border border-line bg-bg-card p-4;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.025), transparent 40%);
+  }
+  .card-raised { @apply card bg-bg-raised shadow-card; }
+  /* A <summary> that opens a section: no browser marker, a chevron on the right that turns open. */
+  .disclosure { list-style: none; }
+  .disclosure::-webkit-details-marker { display: none; }
+  .disclosure::after { content: ''; margin-left: auto; width: 7px; height: 7px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; opacity: .6; transform: rotate(45deg) translate(-2px, -2px); transition: transform .15s; }
+  details[open] > .disclosure::after { transform: rotate(-135deg) translate(-2px, -2px); }
+  @media (prefers-reduced-motion: reduce) { .disclosure::after { transition: none; } }
+  .btn {
+    @apply inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded px-4 text-ctl transition-all duration-150 disabled:cursor-not-allowed disabled:opacity-45;
+  }
+  /* Primary = the Solana gradient; ink on it is near-black (rule: never white on accent). */
+  .btn-primary { @apply btn bg-sol font-semibold text-sol-ink hover:shadow-glow hover:brightness-110 active:brightness-95; }
+  /* Disabled primary: a flat neutral button, not a faded gradient (which reads as broken). */
+  .btn-primary:disabled { @apply bg-none bg-bg-hover text-fg-muted opacity-100 shadow-none brightness-100; }
+  .btn-ghost { @apply btn border border-line bg-bg-raised/40 text-fg hover:border-line-strong hover:bg-bg-hover; }
+  .btn-danger { @apply btn border border-bad/40 bg-bad-soft text-bad hover:bg-bad hover:text-white; }
+  .input {
+    @apply h-10 w-full rounded border border-line bg-bg-input px-3 text-sm text-fg outline-none transition-colors placeholder:text-fg-muted focus:border-accent/70 focus:shadow-[0_0_0_3px_var(--accent-soft)];
+  }
+  select.input { @apply pr-8; }
+  /* Label: 10 / 500 / uppercase / 0.08em, dim. */
+  .label { @apply mb-2 block text-label uppercase text-fg-muted; }
+  .section-title { @apply font-display text-section text-fg; }
+  .pill { @apply inline-flex items-center gap-1 rounded-full border border-line px-2 py-0.5 text-meta font-medium; }
+  .mono { @apply font-mono text-xs; }
+  .chip { @apply inline-flex h-10 items-center gap-2 rounded-[10px] border border-line-strong bg-bg-raised px-3 text-ctl tabular-nums; }
+  .sol-text { @apply bg-sol bg-clip-text text-transparent; }
+  .devnet-badge { @apply inline-flex items-center gap-2 rounded-full border border-warn/40 bg-warn-soft px-2 py-0.5 text-label font-semibold uppercase text-warn; }
+  .tab { @apply h-8 rounded-[8px] px-3 text-ctl text-fg-dim transition-colors hover:bg-bg-hover hover:text-fg; }
+  /* Compact control for row actions (Copy, Top up): 32 px, same family as .btn. */
+  .btn-sm { @apply h-8 px-3 text-meta font-medium; }
+  /* Page column: centred in the window, 1200 px at most, so the page head and the content share
+     one column with even margins on both sides (leading VPN apps and Windows Settings do the same). */
+  .page { @apply mx-auto w-full max-w-[1200px]; }
+  .prose-cap { max-width: 65ch; }
+  /* Section: title left (18/500, sentence case), its actions right, 24 px between sections. */
+  .section { @apply mb-6; }
+  .section-head { @apply mb-3 flex min-h-8 items-center justify-between gap-4; }
+  /* Stat strip: equal cells split by hairlines; label 10 caps over a 20 px value. */
+  .stat-strip { @apply mb-6 grid overflow-hidden rounded-lg border border-line bg-bg-card; grid-auto-columns: minmax(0, 1fr); grid-auto-flow: column; }
+  .stat-cell { @apply min-w-0 border-l border-line px-4 py-3 first:border-l-0; }
+  /* Data table: header row, 48 px rows, text left, numbers right (.n). */
+  .dtable { @apply w-full border-collapse text-sm; }
+  .dtable th { @apply h-8 border-b border-line px-4 text-left text-label font-medium uppercase text-fg-muted; }
+  .dtable td { @apply h-12 border-b border-line px-4 align-middle; }
+  .dtable tr:last-child td { @apply border-b-0; }
+  .dtable .n { @apply text-right tabular-nums; }
+  /* Filter toggle as a chip (a real checkbox inside the label). */
+  .toggle-chip { @apply inline-flex h-10 cursor-pointer select-none items-center gap-2 rounded-[10px] border border-line px-3 text-sm text-fg-dim transition-colors hover:border-line-strong hover:text-fg has-[:disabled]:cursor-not-allowed has-[:disabled]:opacity-45; }
+  .toggle-chip-on { @apply border-accent/50 bg-accent-soft text-fg; }
+  /* One-line empty state inside its section; .empty-box is the same line in its own bordered box. */
+  .empty-line { @apply px-4 py-3 text-sm text-fg-muted; }
+  .empty-box { @apply flex min-h-12 items-center rounded-lg border border-dashed border-line-strong px-4 py-3 text-sm text-fg-muted; }
+  .tab-active { @apply bg-bg-hover text-fg shadow-[inset_0_-2px_0_rgb(var(--sol-green))]; }
+}
+
+/* Checkboxes / radios pick up the accent. */
+input[type='checkbox'], input[type='radio'] { accent-color: rgb(var(--sol-purple)); }
+:focus-visible { outline: 2px solid rgb(var(--sol-purple)); outline-offset: 2px; }
+::selection { background: rgb(var(--sol-purple) / 0.35); }
+* { scrollbar-width: thin; scrollbar-color: rgba(255, 255, 255, 0.14) transparent; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
