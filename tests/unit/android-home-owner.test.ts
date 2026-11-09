@@ -19,8 +19,8 @@ function cfgWith(text: string): string {
 
 describe('androidHomeOwner', () => {
   it('reads the owner dvpnd init wrote (single quotes, as on the phone)', () => {
-    const f = cfgWith("[client]\nrole = 'client'\n\nowner = 'HQRJv6fQsgzgu3j4QHsBGXSZXbjJWSbdGfNroeURkRJb'\n");
-    expect(androidHomeOwner(f)).toBe('HQRJv6fQsgzgu3j4QHsBGXSZXbjJWSbdGfNroeURkRJb');
+    const f = cfgWith("[client]\nrole = 'client'\n\nowner = '11111111111111111111111111111111'\n");
+    expect(androidHomeOwner(f)).toBe('11111111111111111111111111111111');
   });
 
   it('reads double quotes and indentation too', () => {
