@@ -4,24 +4,25 @@ Devnet dVPN is a pure peer-to-peer dVPN app on the Sentinel Solana devnet protoc
 
 ## Download
 
-Latest release: <https://github.com/Sentinel-Bluebuilder/sentinel-solana-dvpn-android/releases/latest>
+Releases: <https://github.com/Sentinel-Bluebuilder/sentinel-solana-dvpn-android/releases>
 
-| Platform | File |
+| Release | File (Android 10+, arm64-v8a and x86_64) |
 |---|---|
-| Android 10+ (arm64-v8a and x86_64) | `app-f61-0.1.4-release.apk` |
-| Checksums | `SHA256SUMS` |
+| [v0.1.4](https://github.com/Sentinel-Bluebuilder/sentinel-solana-dvpn-android/releases/tag/v0.1.4) (latest) | `sentinel-dvpn-android-0.1.4-release.apk` |
+| [v0.3.0-rc2](https://github.com/Sentinel-Bluebuilder/sentinel-solana-dvpn-android/releases/tag/v0.3.0-rc2) (pre-release) | `sentinel-dvpn-android-0.3.0-rc.2-release.apk` |
 
-All files: <https://github.com/Sentinel-Bluebuilder/sentinel-solana-dvpn-android/releases/latest>
+Each release also has `SHA256SUMS`.
 
-## Status: devnet, release candidate, unsigned
+## Status: devnet, unsigned
 
 - Runs on the **Sentinel Solana devnet** only. Devnet tokens have no value; do not use a wallet that holds real funds.
-- This is **release candidate 2 (RC2)**, built on the Sentinel Solana fork cut `final6.1` (`02b22fc`, based on [sentinel-official/sentinel-solana](https://github.com/sentinel-official/sentinel-solana) `26de5240`).
+- **v0.1.4** is the latest release; its daemon is the Sentinel Solana fork cut `final6.5` (`90014b2`). **v0.3.0-rc2** is a release candidate on the fork cut `final6.14`.
+- The source in this repository is the earlier RC2 snapshot, on fork cut `final6.1` (`02b22fc`, based on [sentinel-official/sentinel-solana](https://github.com/sentinel-official/sentinel-solana) `26de5240`).
 - Builds are **not code-signed by a publisher** (see the platform note below), so the OS will warn on first run. Verify the download against `SHA256SUMS` first.
 
 ## Verify a download
 
-Download `SHA256SUMS` and the file(s) from the [release](https://github.com/Sentinel-Bluebuilder/sentinel-solana-dvpn-android/releases/latest) into one folder, then:
+Download `SHA256SUMS` and the file(s) from the [release](https://github.com/Sentinel-Bluebuilder/sentinel-solana-dvpn-android/releases) into one folder, then:
 
 ```bash
 sha256sum -c SHA256SUMS --ignore-missing
