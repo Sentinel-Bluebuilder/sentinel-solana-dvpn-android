@@ -2,6 +2,8 @@
 
 Devnet dVPN is a pure peer-to-peer dVPN app on the Sentinel Solana devnet protocol. Pick any server and pay it directly, or subscribe to any plan. No accounts, no servers in the middle. Kotlin shell + WebView UI + embedded Node and the `dvpnd` daemon. Built on [Sentinel](https://sentinel.co).
 
+AI agents: a released Android build cannot be driven from outside the app; the desktop guide is https://github.com/Sentinel-Bluebuilder/agentic-privacy-solana-devnet/blob/main/AGENTS.md
+
 ## Download
 
 Releases: <https://github.com/Sentinel-Bluebuilder/sentinel-solana-dvpn-android/releases>
